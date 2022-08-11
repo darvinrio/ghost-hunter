@@ -1,0 +1,31 @@
+{
+    "data": {
+      "deposits": [
+        {
+          "id": "15133845:59:0x05f851a010d7059600fb69d100ff5963e42f4f13b62aa996e8c39165c76796f6:123:123",
+          "timestamp": 1657709274,
+          "reserve": {
+            "symbol": "XSUSHI",
+            "decimals": 18
+          },
+          "amount": "378612605822619110817"
+        }
+      ],
+      "usageAsCollaterals": [
+        {
+          "id": "15133845:59:0x05f851a010d7059600fb69d100ff5963e42f4f13b62aa996e8c39165c76796f6:122:122",
+          "timestamp": 1657709274,
+          "reserve": {
+            "symbol": "XSUSHI"
+          },
+          "toState": true
+        }
+      ],
+      "redeemUnderlyings": [],
+      "borrows": [],
+      "repays": [],
+      "swaps": [],
+      "liquidationCalls": [],
+      "flashLoans": []
+    }
+  }
