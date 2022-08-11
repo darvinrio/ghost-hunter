@@ -199,6 +199,14 @@ export const HandleTransactions = ({ txs }: props) => {
         return b.block_number - a.block_number
     });
 
+    if(div_data.length==0) {
+        return(
+            <div>
+                Not a Ghost
+            </div>
+        )
+    }
+
     return (
         <table>
             {

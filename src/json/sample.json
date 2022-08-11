@@ -1,31 +1,54 @@
 {
-    "data": {
-      "deposits": [
-        {
-          "id": "15133845:59:0x05f851a010d7059600fb69d100ff5963e42f4f13b62aa996e8c39165c76796f6:123:123",
-          "timestamp": 1657709274,
-          "reserve": {
-            "symbol": "XSUSHI",
-            "decimals": 18
+  "data": {
+    "users": [
+      {
+        "reserves": [
+          {
+            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640x2260fac5e5542a773aa44fbcfedf7c193bc2c5990xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+            "reserve": {
+              "symbol": "WBTC",
+              "usageAsCollateralEnabled": true,
+              "decimals": 8
+            },
+            "currentATokenBalance": "0",
+            "currentVariableDebt": "0",
+            "currentStableDebt": "0"
           },
-          "amount": "378612605822619110817"
-        }
-      ],
-      "usageAsCollaterals": [
-        {
-          "id": "15133845:59:0x05f851a010d7059600fb69d100ff5963e42f4f13b62aa996e8c39165c76796f6:122:122",
-          "timestamp": 1657709274,
-          "reserve": {
-            "symbol": "XSUSHI"
+          {
+            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640x514910771af9ca656af840dff83e8264ecf986ca0xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+            "reserve": {
+              "symbol": "LINK",
+              "usageAsCollateralEnabled": true,
+              "decimals": 18
+            },
+            "currentATokenBalance": "0",
+            "currentVariableDebt": "0",
+            "currentStableDebt": "0"
           },
-          "toState": true
-        }
-      ],
-      "redeemUnderlyings": [],
-      "borrows": [],
-      "repays": [],
-      "swaps": [],
-      "liquidationCalls": [],
-      "flashLoans": []
-    }
+          {
+            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb480xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+            "reserve": {
+              "symbol": "USDC",
+              "usageAsCollateralEnabled": true,
+              "decimals": 6
+            },
+            "currentATokenBalance": "132330204567",
+            "currentVariableDebt": "125068544102",
+            "currentStableDebt": "0"
+          },
+          {
+            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc20xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+            "reserve": {
+              "symbol": "WETH",
+              "usageAsCollateralEnabled": true,
+              "decimals": 18
+            },
+            "currentATokenBalance": "49997103967229284179",
+            "currentVariableDebt": "0",
+            "currentStableDebt": "0"
+          }
+        ]
+      }
+    ]
   }
+}

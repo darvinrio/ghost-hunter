@@ -1,11 +1,14 @@
 import { useQuery, gql } from '@apollo/client'
-import { useParams } from 'react-router-dom';
 
 import { Txs, HandleTransactions } from '../handlers/HandleTransactions'
 
 const GET_TRANSACTIONS = gql`
-    query GetTxs($user: String) {
+    query GetTxs($user: String, $skip: Int) {
     deposits(
+        skip:$skip,
+        first:1000,
+        orderBy:timestamp,
+        orderDirection:desc
         where: {
             user : $user
         } 
@@ -17,6 +20,10 @@ const GET_TRANSACTIONS = gql`
         amount
     },
     usageAsCollaterals(
+        skip:$skip,
+        first:1000,
+        orderBy:timestamp,
+        orderDirection:desc
         where: {
             user : $user
         }
@@ -28,6 +35,10 @@ const GET_TRANSACTIONS = gql`
         toState
     },
     redeemUnderlyings(
+        skip:$skip,
+        first:1000,
+        orderBy:timestamp,
+        orderDirection:desc
         where: {
             user : $user
         }
@@ -39,7 +50,11 @@ const GET_TRANSACTIONS = gql`
         amount
     },
     borrows (
-    where: {
+        skip:$skip,
+        first:1000,
+        orderBy:timestamp,
+        orderDirection:desc
+        where: {
             user : $user
         }
     ) {
@@ -50,7 +65,11 @@ const GET_TRANSACTIONS = gql`
         amount
     },
     repays (
-    where: {
+        skip:$skip,
+        first:1000,
+        orderBy:timestamp,
+        orderDirection:desc
+        where: {
             user : $user
         }
     ) {
@@ -61,6 +80,10 @@ const GET_TRANSACTIONS = gql`
         amount
     },
     swaps (
+        skip:$skip,
+        first:1000,
+        orderBy:timestamp,
+        orderDirection:desc
         where: {
             user : $user
         }
@@ -72,6 +95,10 @@ const GET_TRANSACTIONS = gql`
         borrowRateModeTo
     },
     liquidationCalls (
+        skip:$skip,
+        first:1000,
+        orderBy:timestamp,
+        orderDirection:desc
         where: {
             user : $user
         }
@@ -88,6 +115,10 @@ const GET_TRANSACTIONS = gql`
         liquidator
     },
     flashLoans (
+        skip:$skip,
+        first:1000,
+        orderBy:timestamp,
+        orderDirection:desc
         where: {
             initiator : $user
         }
@@ -101,37 +132,29 @@ const GET_TRANSACTIONS = gql`
     }
 `
 interface TxDataVars {
-    user: string
+    user: string,
+    skip: number
 }
 
 interface props {
-    user:string
-}
-
-type RouteParams = {
     user: string
 }
 
-export const UsersTxs = () => {
-
-    const {user} = useParams<RouteParams>()
+export const UsersTxs = ({user}:props) => {
 
     const { loading, error, data } = useQuery<Txs, TxDataVars>(
         GET_TRANSACTIONS,
-        { variables: { user: user! } }
+        { variables: { user: user!, skip:0 } }
     );
 
+    
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error!!!</p>
-
+    
     // console.log(data)
-    // HandleTransactions(data)
 
     return (
         <div>
-            <p>
-                Loaded
-            </p>
             <HandleTransactions txs={data!} />
         </div>
     )
