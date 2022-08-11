@@ -71,10 +71,10 @@ const handleNormalTransactions = (normalTx: normalTx, event: string): TxOut => {
     let amount = parseInt(normalTx.amount) / (10 ** decimals!)
 
     let action_verb: string = 'from'
-    if (event == 'Deposit' || event == 'Repay') {
+    if (event === 'Deposit' || event === 'Repay') {
         action_verb = 'into'
     }
-    if (event =='FlashLoan') {
+    if (event ==='FlashLoan') {
         action_verb = ''
     }
 
@@ -102,7 +102,7 @@ const handleUsageTransactions = (usageTx: usageTx): TxOut => {
 
     let action: string = ''
 
-    if (usageTx.toState != undefined) {
+    if (usageTx.toState !== undefined) {
         if(usageTx.toState){
             action = 'Enable Collateral on ' + reserve
         } else {
