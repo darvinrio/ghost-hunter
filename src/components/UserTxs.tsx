@@ -1,4 +1,6 @@
 import { useQuery, gql } from '@apollo/client'
+import { useParams } from 'react-router-dom';
+
 import { Txs, HandleTransactions } from '../handlers/HandleTransactions'
 
 const GET_TRANSACTIONS = gql`
@@ -102,12 +104,21 @@ interface TxDataVars {
     user: string
 }
 
+interface props {
+    user:string
+}
+
+type RouteParams = {
+    user: string
+}
+
 export const UsersTxs = () => {
+
+    const {user} = useParams<RouteParams>()
 
     const { loading, error, data } = useQuery<Txs, TxDataVars>(
         GET_TRANSACTIONS,
-        // { variables: { user: "0x364f7fd945b8c76c3c77d6ac253f1fea3b65e00d" } }
-        { variables: { user: "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d64" } }
+        { variables: { user: user! } }
     );
 
     if (loading) return <p>Loading...</p>

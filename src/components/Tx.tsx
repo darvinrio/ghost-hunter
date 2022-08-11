@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
+import { useParams } from 'react-router-dom';
 
 import { AaveTx } from "./AaveTx"
 
@@ -57,7 +58,13 @@ export const handleReceipt = (receipt: receipt) => {
     return aave_ids
 }
 
+type RouteParams = {
+    tx_hash: string
+}
+
 export const Tx = () => {
+
+    const {tx_hash} = useParams<RouteParams>()
 
     const [errorAxios, setErrorAxios] = useState<string | null>(null);
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -65,9 +72,7 @@ export const Tx = () => {
 
     useEffect(() => {
 
-        axios.get(API_URL('0xd406317c7e05470de0bd3eb718adee4198ebed01bae9f0f7075790ef7013516a')) // another real
-        // axios.get(API_URL('0x05f851a010d7059600fb69d100ff5963e42f4f13b62aa996e8c39165c76796f6')) // real
-        // axios.get(API_URL('0x05f851a010d7059600fb69d000ff5963e42f4f13b62aa996e8c39165c76796f6')) // no tx test
+        axios.get(API_URL(tx_hash!))
             .then((response) => {
 
                 setIsLoaded(true)
@@ -105,7 +110,7 @@ export const Tx = () => {
     return (
         <div>
             <div>
-                <AaveTx AAVEIDs={AAVEIDs}/>
+                <AaveTx AAVEIDs={AAVEIDs} />
             </div>
         </div>
     )
