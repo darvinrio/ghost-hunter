@@ -1,46 +1,463 @@
 {
   "data": {
-    "atokenBalanceHistoryItems": [
+    "userReserves": [
       {
-        "id": "0x135896de8421be2ec868e0b811006171d9df802a0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc20xb53c1a33016b2dc2ff3653530bff1848a515c8c50xd222885db63e5d92e8e804572ff829dee9a99a8198a58c78b85cebafb508c975",
-        "userReserve": {
-          "user": {
-            "id": "0x135896de8421be2ec868e0b811006171d9df802a"
-          },
-          "reserve": {
-            "symbol": "WETH",
-            "decimals": 18
-          }
+        "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640x2260fac5e5542a773aa44fbcfedf7c193bc2c5990xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+        "reserve": {
+          "symbol": "WBTC",
+          "decimals": 8
         },
-        "scaledATokenBalance": "0"
-      },
-      {
-        "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb480xb53c1a33016b2dc2ff3653530bff1848a515c8c50xd222885db63e5d92e8e804572ff829dee9a99a8198a58c78b85cebafb508c975",
-        "userReserve": {
-          "user": {
-            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d64"
+        "aTokenBalanceHistory": [
+          {
+            "timestamp": 1659115766,
+            "scaledATokenBalance": "315870575"
           },
-          "reserve": {
-            "symbol": "USDC",
-            "decimals": 6
-          }
-        },
-        "scaledATokenBalance": "68525381403"
-      },
-      {
-        "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc20xb53c1a33016b2dc2ff3653530bff1848a515c8c50xd222885db63e5d92e8e804572ff829dee9a99a8198a58c78b85cebafb508c975",
-        "userReserve": {
-          "user": {
-            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d64"
+          {
+            "timestamp": 1645799951,
+            "scaledATokenBalance": "1311653441"
           },
-          "reserve": {
-            "symbol": "WETH",
-            "decimals": 18
+          {
+            "timestamp": 1643996462,
+            "scaledATokenBalance": "1496343498"
+          },
+          {
+            "timestamp": 1655645986,
+            "scaledATokenBalance": "301282647"
+          },
+          {
+            "timestamp": 1646058885,
+            "scaledATokenBalance": "1114973166"
+          },
+          {
+            "timestamp": 1651778362,
+            "scaledATokenBalance": "377894718"
+          },
+          {
+            "timestamp": 1658028604,
+            "scaledATokenBalance": "505229028"
+          },
+          {
+            "timestamp": 1659185896,
+            "scaledATokenBalance": "823425767"
+          },
+          {
+            "timestamp": 1658659595,
+            "scaledATokenBalance": "503340073"
+          },
+          {
+            "timestamp": 1632749611,
+            "scaledATokenBalance": "1158470544"
+          },
+          {
+            "timestamp": 1643466203,
+            "scaledATokenBalance": "1197869286"
+          },
+          {
+            "timestamp": 1652024302,
+            "scaledATokenBalance": "0"
+          },
+          {
+            "timestamp": 1655735861,
+            "scaledATokenBalance": "498648619"
+          },
+          {
+            "timestamp": 1646062659,
+            "scaledATokenBalance": "1311323634"
+          },
+          {
+            "timestamp": 1624278228,
+            "scaledATokenBalance": "699099345"
+          },
+          {
+            "timestamp": 1659280187,
+            "scaledATokenBalance": "424050789"
+          },
+          {
+            "timestamp": 1645733682,
+            "scaledATokenBalance": "1006690100"
+          },
+          {
+            "timestamp": 1655241063,
+            "scaledATokenBalance": "102203544"
+          },
+          {
+            "timestamp": 1645628934,
+            "scaledATokenBalance": "909983831"
+          },
+          {
+            "timestamp": 1643185320,
+            "scaledATokenBalance": "503785646"
+          },
+          {
+            "timestamp": 1645531467,
+            "scaledATokenBalance": "507815249"
+          },
+          {
+            "timestamp": 1642876338,
+            "scaledATokenBalance": "0"
+          },
+          {
+            "timestamp": 1658143050,
+            "scaledATokenBalance": "504287113"
+          },
+          {
+            "timestamp": 1645994393,
+            "scaledATokenBalance": "911928043"
+          },
+          {
+            "timestamp": 1656167560,
+            "scaledATokenBalance": "199766838"
+          },
+          {
+            "timestamp": 1658078729,
+            "scaledATokenBalance": "105850033"
+          },
+          {
+            "timestamp": 1646660211,
+            "scaledATokenBalance": "704514146"
+          },
+          {
+            "timestamp": 1645458508,
+            "scaledATokenBalance": "1002763934"
+          },
+          {
+            "timestamp": 1656170700,
+            "scaledATokenBalance": "0"
+          },
+          {
+            "timestamp": 1656090170,
+            "scaledATokenBalance": "599149936"
+          },
+          {
+            "timestamp": 1645538510,
+            "scaledATokenBalance": "708280965"
+          },
+          {
+            "timestamp": 1643058887,
+            "scaledATokenBalance": "304401721"
+          },
+          {
+            "timestamp": 1624281362,
+            "scaledATokenBalance": "798969455"
+          },
+          {
+            "timestamp": 1655330822,
+            "scaledATokenBalance": "203954013"
+          },
+          {
+            "timestamp": 1623288953,
+            "scaledATokenBalance": "599228921"
+          },
+          {
+            "timestamp": 1646663395,
+            "scaledATokenBalance": "877541143"
+          },
+          {
+            "timestamp": 1659280197,
+            "scaledATokenBalance": "124519594"
+          },
+          {
+            "timestamp": 1658422104,
+            "scaledATokenBalance": "200948232"
+          },
+          {
+            "timestamp": 1643354403,
+            "scaledATokenBalance": "1095797810"
+          },
+          {
+            "timestamp": 1646561891,
+            "scaledATokenBalance": "911599168"
+          },
+          {
+            "timestamp": 1643224438,
+            "scaledATokenBalance": "816142186"
+          },
+          {
+            "timestamp": 1626441344,
+            "scaledATokenBalance": "998703556"
+          },
+          {
+            "timestamp": 1660231586,
+            "scaledATokenBalance": "0"
+          },
+          {
+            "timestamp": 1645480874,
+            "scaledATokenBalance": "603037736"
+          },
+          {
+            "timestamp": 1658313455,
+            "scaledATokenBalance": "500212085"
+          },
+          {
+            "timestamp": 1624834771,
+            "scaledATokenBalance": "865881595"
+          },
+          {
+            "timestamp": 1623645191,
+            "scaledATokenBalance": "649164288"
+          },
+          {
+            "timestamp": 1645606568,
+            "scaledATokenBalance": "809076403"
+          },
+          {
+            "timestamp": 1645499522,
+            "scaledATokenBalance": "203311614"
+          },
+          {
+            "timestamp": 1658187701,
+            "scaledATokenBalance": "795847417"
+          },
+          {
+            "timestamp": 1644018981,
+            "scaledATokenBalance": "1570454609"
+          },
+          {
+            "timestamp": 1659529061,
+            "scaledATokenBalance": "504568687"
+          },
+          {
+            "timestamp": 1643662666,
+            "scaledATokenBalance": "1298939387"
+          },
+          {
+            "timestamp": 1645715043,
+            "scaledATokenBalance": "805698816"
+          },
+          {
+            "timestamp": 1646576289,
+            "scaledATokenBalance": "1104474991"
+          },
+          {
+            "timestamp": 1646611779,
+            "scaledATokenBalance": "704750620"
+          },
+          {
+            "timestamp": 1656423918,
+            "scaledATokenBalance": "100135676"
+          },
+          {
+            "timestamp": 1641529189,
+            "scaledATokenBalance": "1349244893"
+          },
+          {
+            "timestamp": 1645673305,
+            "scaledATokenBalance": "510257941"
+          },
+          {
+            "timestamp": 1658275229,
+            "scaledATokenBalance": "296624356"
+          },
+          {
+            "timestamp": 1643232722,
+            "scaledATokenBalance": "898994118"
+          },
+          {
+            "timestamp": 1646614267,
+            "scaledATokenBalance": "498892594"
+          },
+          {
+            "timestamp": 1645195506,
+            "scaledATokenBalance": "1170727741"
+          },
+          {
+            "timestamp": 1658939316,
+            "scaledATokenBalance": "815089823"
+          },
+          {
+            "timestamp": 1645450466,
+            "scaledATokenBalance": "771001441"
+          },
+          {
+            "timestamp": 1638603293,
+            "scaledATokenBalance": "1208392735"
           }
-        },
-        "scaledATokenBalance": "0"
+        ],
+        "depositHistory": [
+          {
+            "timestamp": 1623288953,
+            "amount": "600000000"
+          },
+          {
+            "timestamp": 1623645191,
+            "amount": "50000000"
+          },
+          {
+            "timestamp": 1624278228,
+            "amount": "50000000"
+          },
+          {
+            "timestamp": 1624281362,
+            "amount": "100000000"
+          },
+          {
+            "timestamp": 1624834771,
+            "amount": "67000000"
+          },
+          {
+            "timestamp": 1626441344,
+            "amount": "133000000"
+          },
+          {
+            "timestamp": 1632749611,
+            "amount": "160000000"
+          },
+          {
+            "timestamp": 1638603293,
+            "amount": "50000000"
+          },
+          {
+            "timestamp": 1641529189,
+            "amount": "141073373"
+          },
+          {
+            "timestamp": 1643058887,
+            "amount": "304882648"
+          },
+          {
+            "timestamp": 1643185320,
+            "amount": "199698988"
+          },
+          {
+            "timestamp": 1643224438,
+            "amount": "312850132"
+          },
+          {
+            "timestamp": 1643232722,
+            "amount": "82982857"
+          },
+          {
+            "timestamp": 1643354403,
+            "amount": "197114715"
+          },
+          {
+            "timestamp": 1643466203,
+            "amount": "102232797"
+          },
+          {
+            "timestamp": 1643662666,
+            "amount": "101229868"
+          },
+          {
+            "timestamp": 1643996462,
+            "amount": "197716255"
+          },
+          {
+            "timestamp": 1644018981,
+            "amount": "74228302"
+          },
+          {
+            "timestamp": 1645458508,
+            "amount": "232129952"
+          },
+          {
+            "timestamp": 1645531467,
+            "amount": "304986588"
+          },
+          {
+            "timestamp": 1645538510,
+            "amount": "200783665"
+          },
+          {
+            "timestamp": 1645606568,
+            "amount": "100955321"
+          },
+          {
+            "timestamp": 1645628934,
+            "amount": "101067494"
+          },
+          {
+            "timestamp": 1645715043,
+            "amount": "295909649"
+          },
+          {
+            "timestamp": 1645733682,
+            "amount": "201310209"
+          },
+          {
+            "timestamp": 1645799951,
+            "amount": "305447297"
+          },
+          {
+            "timestamp": 1646058885,
+            "amount": "203367627"
+          },
+          {
+            "timestamp": 1646062659,
+            "amount": "196662341"
+          },
+          {
+            "timestamp": 1646576289,
+            "amount": "193182515"
+          },
+          {
+            "timestamp": 1646660211,
+            "amount": "205948579"
+          },
+          {
+            "timestamp": 1646663395,
+            "amount": "173302185"
+          },
+          {
+            "timestamp": 1655241063,
+            "amount": "102371257"
+          },
+          {
+            "timestamp": 1655330822,
+            "amount": "101917552"
+          },
+          {
+            "timestamp": 1655645986,
+            "amount": "97566545"
+          },
+          {
+            "timestamp": 1655735861,
+            "amount": "197848471"
+          },
+          {
+            "timestamp": 1656090170,
+            "amount": "100747129"
+          },
+          {
+            "timestamp": 1656423918,
+            "amount": "100380686"
+          },
+          {
+            "timestamp": 1658028604,
+            "amount": "406088290"
+          },
+          {
+            "timestamp": 1658143050,
+            "amount": "399415954"
+          },
+          {
+            "timestamp": 1658187701,
+            "amount": "292276695"
+          },
+          {
+            "timestamp": 1658313455,
+            "amount": "204088162"
+          },
+          {
+            "timestamp": 1658659595,
+            "amount": "303136431"
+          },
+          {
+            "timestamp": 1658939316,
+            "amount": "312518073"
+          },
+          {
+            "timestamp": 1659185896,
+            "amount": "508806779"
+          },
+          {
+            "timestamp": 1659529061,
+            "amount": "380987057"
+          }
+        ],
+        "redeemUnderlyingHistory": [],
+        "liquidationCallHistory": []
       }
-    ],
-    "vtokenBalanceHistoryItems": []
+    ]
   }
 }

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom"
 
 interface ReserveInfo {
     symbol: string,
@@ -20,10 +21,16 @@ interface props {
 
 export const HandleReserves = ({ positions }: props) => {
 
+    let navigate = useNavigate();
+
     let lending_div: JSX.Element[] = []
     let borrowing_div: JSX.Element[] = []
 
     positions.map((position) => {
+
+        const handleReserveClick = (e:any) => {
+            navigate('/reserve/'+position.id)
+        }
 
         let decimals = position.reserve.decimals
         let current_lending = parseInt(position.currentATokenBalance) / 10 ** decimals
@@ -33,49 +40,49 @@ export const HandleReserves = ({ positions }: props) => {
         let active_borrow = current_v_debt + current_s_debt
         let active = current_lending + active_borrow
 
-        if (!active) {
-            return
+        if (true) {
+            borrowing_div.push(
+                <ReserveDiv onClick={handleReserveClick}>
+                    <p key={position.id}>
+                        <h2>
+                            {position.reserve.symbol}
+                        </h2>
+                        <h3>
+                            {new Intl.NumberFormat('en-GB', {
+                                notation: "compact",
+                                compactDisplay: "short"
+                            }).format(active_borrow)} {' ' + position.reserve.symbol}
+                        </h3>
+                        Variable : {new Intl.NumberFormat('en-GB', {
+                            notation: "compact",
+                            compactDisplay: "short"
+                        }).format(current_v_debt)}
+                        {' '}||
+                        Stable : {new Intl.NumberFormat('en-GB', {
+                            notation: "compact",
+                            compactDisplay: "short"
+                        }).format(current_s_debt)}
+                    </p>
+                </ReserveDiv>
+            )
         }
 
-        if (active_borrow !== 0) {
-            borrowing_div.push(
+        lending_div.push(
+            <ReserveDiv onClick={handleReserveClick}>
                 <p key={position.id}>
                     <h2>
                         {position.reserve.symbol}
                     </h2>
                     <h3>
+                        {/* {current_lending} */}
                         {new Intl.NumberFormat('en-GB', {
                             notation: "compact",
                             compactDisplay: "short"
-                        }).format(active_borrow)} {' ' + position.reserve.symbol}
+                        }).format(current_lending)} {' ' + position.reserve.symbol}
                     </h3>
-                    Variable : {new Intl.NumberFormat('en-GB', {
-                        notation: "compact",
-                        compactDisplay: "short"
-                    }).format(current_v_debt)}
-                    {' '}||
-                    Stable : {new Intl.NumberFormat('en-GB', {
-                        notation: "compact",
-                        compactDisplay: "short"
-                    }).format(current_s_debt)}
+                    Collateral : {position.reserve.usageAsCollateralEnabled ? 'yes' : 'no'}
                 </p>
-            )
-        }
-
-        lending_div.push(
-            <p key={position.id}>
-                <h2>
-                    {position.reserve.symbol}
-                </h2>
-                <h3>
-                    {/* {current_lending} */}
-                    {new Intl.NumberFormat('en-GB', {
-                        notation: "compact",
-                        compactDisplay: "short"
-                    }).format(current_lending)} {' ' + position.reserve.symbol}
-                </h3>
-                Collateral : {position.reserve.usageAsCollateralEnabled ? 'yes' : 'no'}
-            </p>
+            </ReserveDiv>
         )
     })
 
@@ -116,4 +123,20 @@ const CurrentPositionsDiv = styled.div`
 const PositionDiv = styled.div`
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr ;
+
+    padding: 10px ;
+    margin: 20px ;
+`
+
+const ReserveDiv = styled.div`
+    justify-content: center ;
+    align-items: center ;
+
+    padding: 20px ;
+    margin: 20px ;
+
+    border: 1px ;
+    border-style: solid;
+    border-color: white ;
+    border-radius: 10px ;
 `

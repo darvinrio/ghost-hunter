@@ -71,12 +71,12 @@ export const HandleTxReserves = ({ txReserve }: props) => {
     return (
         <div>
             <p>
-                Lending Positions after transaction:
+                Lending Positions affected after transaction:
             </p>
             <ReserveUserGrouper reserve={aToken} />
             <br />
             <p>
-                Borrowing Positions after transaction:
+                Borrowing Positions affected after transaction:
             </p>
             <ReserveUserGrouper reserve={vToken} />
         </div>

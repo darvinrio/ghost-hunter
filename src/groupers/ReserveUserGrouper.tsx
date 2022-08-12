@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import styled from "styled-components"
 
 interface userReserves {
     user: string,
@@ -58,11 +59,11 @@ export const ReserveUserGrouper = ({ reserve }: props) => {
     })
 
     return (
-        <div>
+        <>
             {
                 userPositions.map((position) => {
                     return (
-                        <div>
+                        <TxUserReserveDiv>
                             <h4>
                                 <Link to={'/user/'+position.user}>
                                     {position.user}
@@ -71,10 +72,20 @@ export const ReserveUserGrouper = ({ reserve }: props) => {
                             <div>
                                 {position.divs}
                             </div>
-                        </div>
+                        </TxUserReserveDiv>
                     )
                 })
             }
-        </div>
+        </>
     )
 }
+
+const TxUserReserveDiv = styled.div`
+    padding: 10px ;
+    margin: 20px ;
+
+    border: 1px ;
+    border-style: solid;
+    border-color: white ;
+    border-radius: 20px ;
+`

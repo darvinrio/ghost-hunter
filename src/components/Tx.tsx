@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { useParams, Link } from 'react-router-dom';
+import styled from "styled-components";
 
 import { AaveTx } from "./AaveTx"
 import { formatTime } from "../handlers/HandleTx";
@@ -136,25 +137,33 @@ export const Tx = () => {
             <p>
                 <a href={'https://etherscan.io/tx/' + tx_hash} target="_blank">Etherscan Link</a>
             </p>
-            <p>
-                Block Number:
-                {parseInt(blockNumber, 16)}
-            </p>
-            <p>
-                Block Timestamp:
-                {formatTime(new Date(parseInt(blockTimestamp, 16) * 1000))}
-            </p>
-            <p>
-                User:
-                <Link to={"/user/" + User}>
-                    {User}
-                </Link>
-            </p>
-            <p>
-                Gas:
-                {parseInt(Gas, 16) + ' units at ' + parseInt(Gwei, 16) / 10 ** 9 + ' gwei'}
-            </p>
             <br />
+            <hr />
+            <TxInfoTable>
+                <tr>
+                    <td>Block Number</td>
+                    <td>{parseInt(blockNumber, 16)}</td>
+                </tr>
+                <tr>
+                    <td>Block Timestamp</td>
+                    <td>{formatTime(new Date(parseInt(blockTimestamp, 16) * 1000))}</td>
+                </tr>
+                <tr>
+                    <td>Inititating User</td>
+                    <td>
+                        <Link to={"/user/" + User}>
+                            {User}
+                        </Link>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gas</td>
+                    <td> {parseInt(Gas, 16) + ' units at ' + parseInt(Gwei, 16) / 10 ** 9 + ' gwei'} </td>
+                </tr>
+            </TxInfoTable>
+          
+            <br />
+            <hr />
 
             <p>
                 Events:
@@ -165,3 +174,11 @@ export const Tx = () => {
         </div>
     )
 }
+
+const TxInfoTable = styled.table`
+    width: 80% ;
+
+    td{
+        padding: 8px;
+    }
+`

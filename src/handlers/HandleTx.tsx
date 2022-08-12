@@ -253,6 +253,9 @@ export const HandleTxs = ({ txs }: props) => {
                 }
             </EventsTable>
 
+            <br />
+            <hr />
+
             <TxReserves reserveIds={userReserve}/>
         </>
     )

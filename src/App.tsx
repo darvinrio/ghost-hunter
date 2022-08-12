@@ -9,6 +9,7 @@ import Layout from './components/Layout';
 import { Home } from './components/Home'
 import { User } from './components/User'
 import { Tx } from './components/Tx';
+import { UserReserve } from './components/UserReserve';
 import NoPage from './components/NoPage';
 
 let theme = require('./json/theme.json')
@@ -26,6 +27,7 @@ function App() {
             yolo
             {/* <Route path="user/:user" element={<UsersTxs/>} /> */}
             <Route path="user/:user" element={<User />} />
+            <Route path="reserve/:reserve_id" element={<UserReserve />} />
             <Route path="tx/:tx_hash" element={<Tx />} />
             <Route path="*" element={<NoPage />} />
           </Route>
