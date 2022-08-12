@@ -1,3 +1,8 @@
+import { Link } from "react-router-dom"
+import styled from "styled-components"
+
+import {UserTxGrouper} from '../groupers/UserTxGrouper'
+
 interface reserve {
     symbol: string,
     decimals?: number
@@ -70,11 +75,11 @@ const handleNormalTransactions = (normalTx: normalTx, event: string): TxOut => {
     let decimals = normalTx.reserve.decimals
     let amount = parseInt(normalTx.amount) / (10 ** decimals!)
 
-    let action_verb: string = 'from'
+    let action_verb: string = ''
     if (event === 'Deposit' || event === 'Repay') {
-        action_verb = 'into'
+        action_verb = ''
     }
-    if (event ==='FlashLoan') {
+    if (event === 'FlashLoan') {
         action_verb = ''
     }
 
@@ -103,7 +108,7 @@ const handleUsageTransactions = (usageTx: usageTx): TxOut => {
     let action: string = ''
 
     if (usageTx.toState !== undefined) {
-        if(usageTx.toState){
+        if (usageTx.toState) {
             action = 'Enable Collateral on ' + reserve
         } else {
             action = 'Disable Collateral on ' + reserve
@@ -125,7 +130,7 @@ const handleUsageTransactions = (usageTx: usageTx): TxOut => {
 
 }
 
-const handleLiquidationTransactions = (liqTx: liqTx):TxOut => {
+const handleLiquidationTransactions = (liqTx: liqTx): TxOut => {
 
     let id_array: string[] = liqTx.id.split(':')
     let block_number: number = parseInt(id_array[0])
@@ -193,14 +198,14 @@ export const HandleTransactions = ({ txs }: props) => {
 
     let div_data = deposits.concat(repays, borrows, redeems, flashloans, enableCollat, changeRate, liquidations)
     div_data.sort((a: TxOut, b: TxOut) => {
-        if(a.block_number==b.block_number) {
+        if (a.block_number == b.block_number) {
             return b.event_index - a.event_index
         }
         return b.block_number - a.block_number
     });
 
-    if(div_data.length==0) {
-        return(
+    if (div_data.length == 0) {
+        return (
             <div>
                 Not a Ghost
             </div>
@@ -208,20 +213,17 @@ export const HandleTransactions = ({ txs }: props) => {
     }
 
     return (
-        <table>
-            {
-                div_data.map((tx:TxOut) => {
-                    return (
-                        <tr>
-                            <td> {tx.block_number} </td>
-                            <td> {tx.tx_time} </td>
-                            <td> {tx.event} </td>
-                            <td> <a href={'https://etherscan.io/tx/' + tx.tx_hash}>{tx.tx_hash}</a> </td>
-                        </tr>
-                    )
-                })
-            }
-        </table>
+        <>
+            <UserTxGrouper txs={div_data}/>
+        </>
     )
 
 }
+
+const TxsTable = styled.table`
+    width: 80% ;
+
+    td{
+        padding: 8px;
+    }
+`

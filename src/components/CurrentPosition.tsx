@@ -5,7 +5,7 @@ const GET_POSTION = gql`
     query GetPosition($user: String) {
         users (
             where: {
-                id: "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d64"
+                id: $user
             }
         ) {
             reserves{
@@ -42,7 +42,7 @@ export const CurrentPosition = ({user}:props) => {
 
     const { loading, error, data } = useQuery<CurrentPosition, CurrentPositionVars>(
         GET_POSTION,
-        { variables: { user: user!} }
+        { variables: { user: user} }
     );
 
     if (loading) return <p>Loading...</p>

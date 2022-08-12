@@ -1,54 +1,46 @@
 {
   "data": {
-    "users": [
+    "atokenBalanceHistoryItems": [
       {
-        "reserves": [
-          {
-            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640x2260fac5e5542a773aa44fbcfedf7c193bc2c5990xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
-            "reserve": {
-              "symbol": "WBTC",
-              "usageAsCollateralEnabled": true,
-              "decimals": 8
-            },
-            "currentATokenBalance": "0",
-            "currentVariableDebt": "0",
-            "currentStableDebt": "0"
+        "id": "0x135896de8421be2ec868e0b811006171d9df802a0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc20xb53c1a33016b2dc2ff3653530bff1848a515c8c50xd222885db63e5d92e8e804572ff829dee9a99a8198a58c78b85cebafb508c975",
+        "userReserve": {
+          "user": {
+            "id": "0x135896de8421be2ec868e0b811006171d9df802a"
           },
-          {
-            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640x514910771af9ca656af840dff83e8264ecf986ca0xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
-            "reserve": {
-              "symbol": "LINK",
-              "usageAsCollateralEnabled": true,
-              "decimals": 18
-            },
-            "currentATokenBalance": "0",
-            "currentVariableDebt": "0",
-            "currentStableDebt": "0"
-          },
-          {
-            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb480xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
-            "reserve": {
-              "symbol": "USDC",
-              "usageAsCollateralEnabled": true,
-              "decimals": 6
-            },
-            "currentATokenBalance": "132330204567",
-            "currentVariableDebt": "125068544102",
-            "currentStableDebt": "0"
-          },
-          {
-            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc20xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
-            "reserve": {
-              "symbol": "WETH",
-              "usageAsCollateralEnabled": true,
-              "decimals": 18
-            },
-            "currentATokenBalance": "49997103967229284179",
-            "currentVariableDebt": "0",
-            "currentStableDebt": "0"
+          "reserve": {
+            "symbol": "WETH",
+            "decimals": 18
           }
-        ]
+        },
+        "scaledATokenBalance": "0"
+      },
+      {
+        "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb480xb53c1a33016b2dc2ff3653530bff1848a515c8c50xd222885db63e5d92e8e804572ff829dee9a99a8198a58c78b85cebafb508c975",
+        "userReserve": {
+          "user": {
+            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d64"
+          },
+          "reserve": {
+            "symbol": "USDC",
+            "decimals": 6
+          }
+        },
+        "scaledATokenBalance": "68525381403"
+      },
+      {
+        "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d640xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc20xb53c1a33016b2dc2ff3653530bff1848a515c8c50xd222885db63e5d92e8e804572ff829dee9a99a8198a58c78b85cebafb508c975",
+        "userReserve": {
+          "user": {
+            "id": "0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d64"
+          },
+          "reserve": {
+            "symbol": "WETH",
+            "decimals": 18
+          }
+        },
+        "scaledATokenBalance": "0"
       }
-    ]
+    ],
+    "vtokenBalanceHistoryItems": []
   }
 }

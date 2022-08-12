@@ -1,15 +1,19 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import { AaveTx } from "./AaveTx"
+import { formatTime } from "../handlers/HandleTx";
 
 const ETHERSCAN_API_KEY = process.env.REACT_APP_ETHERSCAN_API_KEY
-export const API_URL = (
-    tx_hash: string
-) => {
+export const API_URL = (tx_hash: string) => {
     return `
         https://api.etherscan.io/api?module=proxy&action=eth_getTransactionReceipt&txhash=${tx_hash}&apikey=${ETHERSCAN_API_KEY}
+    `
+}
+export const BLOCK_URL = (block: string) => {
+    return `
+        https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=${block}&boolean=true&apikey=${ETHERSCAN_API_KEY}
     `
 }
 
@@ -64,23 +68,41 @@ type RouteParams = {
 
 export const Tx = () => {
 
-    const {tx_hash} = useParams<RouteParams>()
+    const { tx_hash } = useParams<RouteParams>()
 
     const [errorAxios, setErrorAxios] = useState<string | null>(null);
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
     const [AAVEIDs, setAAVEIDs] = useState<string[]>([]);
 
+    const [blockNumber, setBlockNumber] = useState<string>('')
+    const [blockTimestamp, setBlockTimestamp] = useState<string>('')
+    const [Gas, setGas] = useState<string>('')
+    const [Gwei, setGwei] = useState<string>('')
+    const [User, setUser] = useState<string>('')
+
+
     useEffect(() => {
 
         axios.get(API_URL(tx_hash!))
             .then((response) => {
-
-                setIsLoaded(true)
-
+                // setIsLoaded(true)
                 let result = response.data.result
+                // console.log(result)
                 if (result === null) {
                     setErrorAxios('Transaction not found')
                 } else {
+                    setBlockNumber(result.blockNumber)
+                    setGas(result.cumulativeGasUsed)
+                    setGwei(result.effectiveGasPrice)
+                    setUser(result.from)
+
+                    axios.get(BLOCK_URL(result.blockNumber))
+                        .then((response) => {
+                            setIsLoaded(true)
+                            let result = response.data.result
+                            setBlockTimestamp(result.timestamp)
+                        })
+
                     setAAVEIDs(handleReceipt(result))
                 }
             })
@@ -106,13 +128,40 @@ export const Tx = () => {
         )
     }
 
-
     return (
         <div>
+            <h2>
+                {tx_hash}
+            </h2>
+            <p>
+                <a href={'https://etherscan.io/tx/' + tx_hash} target="_blank">Etherscan Link</a>
+            </p>
+            <p>
+                Block Number:
+                {parseInt(blockNumber, 16)}
+            </p>
+            <p>
+                Block Timestamp:
+                {formatTime(new Date(parseInt(blockTimestamp, 16) * 1000))}
+            </p>
+            <p>
+                User:
+                <Link to={"/user/" + User}>
+                    {User}
+                </Link>
+            </p>
+            <p>
+                Gas:
+                {parseInt(Gas, 16) + ' units at ' + parseInt(Gwei, 16) / 10 ** 9 + ' gwei'}
+            </p>
+            <br />
+
+            <p>
+                Events:
+            </p>
             <div>
                 <AaveTx AAVEIDs={AAVEIDs} />
             </div>
         </div>
     )
-
 }

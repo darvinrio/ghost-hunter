@@ -29,4 +29,12 @@ p {
 img {
   max-width: 100%;
 }
+a {
+  color: hotpink;
+  text-decoration: none;
+
+  :hover{
+    color:pink ;
+  }
+}
 `

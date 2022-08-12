@@ -1,6 +1,6 @@
 import { useQuery, gql } from '@apollo/client'
 
-import { Txs, HandleTransactions } from "../handlers/HandleTransactions"
+import { Txs, HandleTxs } from "../handlers/HandleTx"
 
 
 const GET_TRANSACTION_INFO = gql`
@@ -12,9 +12,12 @@ query GetTxInfo($aave_ids: [String]) {
     ) {
         id, timestamp,
         reserve{
-        symbol, decimals
+            symbol, decimals
         },
-        amount
+        amount,
+        userReserve {
+            id
+        }
     },
     usageAsCollaterals(
         where: {
@@ -25,7 +28,10 @@ query GetTxInfo($aave_ids: [String]) {
         reserve{
             symbol
         },
-        toState
+        toState,
+        userReserve {
+            id
+        }
     },
     redeemUnderlyings(
         where: {
@@ -36,7 +42,10 @@ query GetTxInfo($aave_ids: [String]) {
         reserve {
             symbol,  decimals
         },
-        amount
+        amount,
+        userReserve {
+            id
+        }
     },
     borrows (
         where: {
@@ -47,7 +56,10 @@ query GetTxInfo($aave_ids: [String]) {
         reserve {
             symbol, decimals
         },
-        amount
+        amount,
+        userReserve {
+            id
+        }
     },
     repays (
         where: {
@@ -58,7 +70,10 @@ query GetTxInfo($aave_ids: [String]) {
         reserve {
             symbol, decimals
         },
-        amount
+        amount,
+        userReserve {
+            id
+        }
     },
     swaps (
         where: {
@@ -69,7 +84,10 @@ query GetTxInfo($aave_ids: [String]) {
         reserve {
         symbol
         },
-        borrowRateModeTo
+        borrowRateModeTo,
+        userReserve {
+            id
+        }
     },
     liquidationCalls (
         where: {
@@ -110,9 +128,10 @@ interface props {
 
 export const AaveTx = ({AAVEIDs}:props) => {
 
+    // console.log(AAVEIDs)
+
     const { loading, error, data } = useQuery<Txs, TxInfoVars>(
         GET_TRANSACTION_INFO,
-        // { variables: { user: "0x364f7fd945b8c76c3c77d6ac253f1fea3b65e00d" } }
         { variables: { aave_ids: AAVEIDs } }
     );
 
@@ -121,7 +140,7 @@ export const AaveTx = ({AAVEIDs}:props) => {
 
     return (
         <div>
-            <HandleTransactions txs={data!} />
+            <HandleTxs txs={data!} />
         </div>
     )
 }

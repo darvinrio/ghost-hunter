@@ -52,7 +52,7 @@ export const InputBox = () => {
                 placeholder="Enter transaction hash or user address"
                 onChange={(e) => setEntry(e.target.value)}
                 required
-                autoFocus
+                // autoFocus
             />
             <Button
                 bg={'white'}
@@ -70,7 +70,7 @@ export const InputBox = () => {
 const StyledInput = styled.input`
     font-family: ${({ theme }) => theme.font_family.name}, ${({ theme }) => theme.font_family.type};
     min-height: 20px;
-    width: 80%;
+    width: 50%;
     background: transparent;
 
     color:pink;
