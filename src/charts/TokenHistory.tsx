@@ -21,7 +21,7 @@ export const TokenHistory = ({ plotdata }: props) => {
 
     return (
         <>
-            {/* <ResponsiveContainer width={"90%"} height={300}>
+            <ResponsiveContainer width={"90%"} height={300}>
                 <AreaChart data={plotdata} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
                     <defs>
                         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -45,7 +45,7 @@ export const TokenHistory = ({ plotdata }: props) => {
                     <Tooltip />
                     <Legend />
                 </AreaChart>
-            </ResponsiveContainer> */}
+            </ResponsiveContainer>
         </>
     )
 }
