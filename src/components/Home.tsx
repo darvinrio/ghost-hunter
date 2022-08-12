@@ -65,6 +65,24 @@ export const Home = () => {
             >
                 Search
             </Button>
+            <br />
+            <br />
+            <p>
+                Sample Inputs: 
+                Users
+                    <ul>
+                        <li>0x1908bb246da7d358e4f79cea8b3d2ce5e81e6d64</li>
+                        <li>0x3ddfa8ec3052539b6c9549f12cea2c295cff5296</li>
+                    </ul>
+            </p>
+            <p>
+                Sample Inputs: 
+                Txs
+                    <ul>
+                        <li>0xd406317c7e05470de0bd3eb718adee4198ebed01bae9f0f7075790ef7013516a</li>
+                        <li>0x05f851a010d7059600fb69d100ff5963e42f4f13b62aa996e8c39165c76796f6</li>
+                    </ul>
+            </p>
         </HomeLayout>
     )
 }

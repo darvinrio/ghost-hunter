@@ -13,6 +13,9 @@ export const User = () => {
 
     return (
         <div>
+            <h1>
+                {user}
+            </h1>
             <CurrentPosition user={user!} />
             <br />
             <UsersTxs user={user!} />

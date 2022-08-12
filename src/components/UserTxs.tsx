@@ -155,6 +155,9 @@ export const UsersTxs = ({user}:props) => {
 
     return (
         <div>
+            <p>
+                <h2>Transactions</h2> - (Click to expand AAVE events or Click on hash)
+            </p>
             <HandleTransactions txs={data!} />
         </div>
     )

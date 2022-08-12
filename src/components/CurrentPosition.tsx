@@ -50,6 +50,9 @@ export const CurrentPosition = ({user}:props) => {
     
     return (
         <div>
+            <p>
+                <h2>Current Positions</h2>
+            </p>
             <HandleReserves positions={data!.users![0].reserves} />
         </div>
     )

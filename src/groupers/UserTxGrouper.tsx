@@ -1,6 +1,7 @@
-import {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import styled from 'styled-components'
+
+import { UserTxLayout } from '../components/UserTxLayout'
 
 interface TxOut {
     block_number: number,
@@ -16,22 +17,22 @@ interface props {
 }
 
 interface userTxDIV {
-    tx_hash:string,
-    tx_time:string,
-    block_number:number,
+    tx_hash: string,
+    tx_time: string,
+    block_number: number,
     events: string[]
 }
 
-export const UserTxGrouper = ({txs}:props) => {
+export const UserTxGrouper = ({ txs }: props) => {
 
     const [TxOnly, setTxOnly] = useState<userTxDIV[]>([])
     const [txHashes, settxHashes] = useState<String[]>([])
 
-    const pushTX = (tx:TxOut) => {
+    const pushTX = (tx: TxOut) => {
         if (txHashes.includes(tx.tx_hash)) {
 
             TxOnly.map((Tx) => {
-                if(Tx.tx_hash=== tx.tx_hash){
+                if (Tx.tx_hash === tx.tx_hash) {
                     Tx.events.push(tx.event)
                 }
             })
@@ -40,9 +41,9 @@ export const UserTxGrouper = ({txs}:props) => {
             txHashes.push(tx.tx_hash)
 
             TxOnly.push({
-                tx_hash : tx.tx_hash,
-                tx_time : tx.tx_time,
-                block_number : tx.block_number,
+                tx_hash: tx.tx_hash,
+                tx_time: tx.tx_time,
+                block_number: tx.block_number,
                 events: [tx.event]
             })
         }
@@ -52,26 +53,18 @@ export const UserTxGrouper = ({txs}:props) => {
         pushTX(tx)
     })
 
-    return(
+    return (
         <TxsTable>
             <tr>
                 <th> Block Number </th>
                 <th> Timestamp </th>
                 <th> TxHash </th>
-                <th></th>
+                {/* <th> Events </th> */}
             </tr>
             {
                 TxOnly.map((Tx) => {
                     return (
-                        <tr>
-                            <td>{Tx.block_number}</td>
-                            <td>{Tx.tx_time}</td>
-                            <td>
-                                <Link to={'/tx/'+Tx.tx_hash}>
-                                    {Tx.tx_hash}
-                                </Link>
-                            </td>
-                        </tr>
+                        <UserTxLayout key={Tx.tx_hash} tx={Tx} />
                     )
                 })
             }
@@ -81,11 +74,21 @@ export const UserTxGrouper = ({txs}:props) => {
 
 const TxsTable = styled.table`
     width: 80% ;
-
+    .hide{
+        visibility: collapse ;
+    }
+    .shown{
+        background-color: #525252;
+    }
+    .highlight{
+        background-color: #1d1d1c
+    }
+    tr:hover {
+        background-color: #6b6b6b;
+    }
     th{
         text-align: left;
     }
-
     td{
         padding: 8px;
     }

@@ -47,7 +47,7 @@ export const InputBox = () => {
     }
 
     return (
-        <>
+        <div>
             <StyledInput
                 placeholder="Enter transaction hash or user address"
                 onChange={(e) => setEntry(e.target.value)}
@@ -56,6 +56,7 @@ export const InputBox = () => {
             />
             <Button
                 bg={'white'}
+                min_height={"10px"}
                 onClick={handleSubmit}
             >
                 Search
@@ -63,7 +64,7 @@ export const InputBox = () => {
             <p>
                 {invalid ? 'Invalid Input' : null}
             </p>
-        </>
+        </div>
     )
 }
 

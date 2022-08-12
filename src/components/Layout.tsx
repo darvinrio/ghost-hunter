@@ -21,9 +21,10 @@ const Layout = () => {
 
 const NavLayout = styled.div`
   display:grid ;
-  grid-template-columns: 2fr 4fr 1fr 1fr;
+  grid-template-columns: 2fr 4fr;
   align-self: center;
-  justify-self: center;
+  justify-items: stretch;
+  justify-content: space-between;
 `
 
 export default Layout;

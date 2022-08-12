@@ -4,6 +4,7 @@ interface props {
     theme?:DefaultTheme,
     color?:string,
     bg?: string,
+    min_height?: string
 }
 
 export const Button = styled.button<props>`
@@ -12,7 +13,8 @@ export const Button = styled.button<props>`
     color: ${props =>props.color || props.theme.colors.bg} ;
     text-align: center;
     justify-content: center;
-    min-height: 50px;
+    /* min-height: 50px; */
+    min-height: ${props => props.min_height || '50px'};
     min-width: 200px;
     font-size: 1.1rem;
     font-family: ${({ theme }) => theme.font_family.name}, ${({ theme }) => theme.font_family.type};

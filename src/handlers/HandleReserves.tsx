@@ -39,7 +39,7 @@ export const HandleReserves = ({ positions }: props) => {
 
         if (active_borrow !== 0) {
             borrowing_div.push(
-                <p>
+                <p key={position.id}>
                     <h2>
                         {position.reserve.symbol}
                     </h2>
@@ -63,7 +63,7 @@ export const HandleReserves = ({ positions }: props) => {
         }
 
         lending_div.push(
-            <p>
+            <p key={position.id}>
                 <h2>
                     {position.reserve.symbol}
                 </h2>
@@ -82,25 +82,27 @@ export const HandleReserves = ({ positions }: props) => {
     return (
         <CurrentPositionsDiv>
             <div>
-                <p>
-                    Provided
-                </p>
-                {lending_div}
+                <h3>Lending Positions</h3>
+                <PositionDiv>
+                    {lending_div}
+                </PositionDiv>
+
             </div>
             <div>
-                <p>
-                    Borrowed
-                </p>
-                {borrowing_div}
+                <h3>Borrowing Positions</h3>
+                {(borrowing_div.length == 0) ? 'None' : ''}
+                <PositionDiv>
+                    {borrowing_div}
+                </PositionDiv>
             </div>
         </CurrentPositionsDiv>
     )
 }
 
 const CurrentPositionsDiv = styled.div`
-    display: grid;
-    grid-template-columns: 2fr 2fr ;
-    padding: 30px;
+    display: flex;
+    flex-direction: column ;
+    padding: 10px;
     margin: 10px;
 
     @media (max-width: 900px){
@@ -109,4 +111,9 @@ const CurrentPositionsDiv = styled.div`
         align-items:flex-start;
         justify-content: left;
     }
+`
+
+const PositionDiv = styled.div`
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
 `
