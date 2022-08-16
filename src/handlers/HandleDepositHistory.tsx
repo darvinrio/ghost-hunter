@@ -2,37 +2,8 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Metric } from '../charts/Metric'
 import { MovementHistory } from '../charts/MovementHistory'
-import { MovementHistory_2 } from '../charts/MovementHistory_2'
 import { TokenHistory } from '../charts/TokenHistory'
-
-interface aTokenBalanceHistory {
-    timestamp: number,
-    scaledATokenBalance: string
-}
-interface depositHistory {
-    timestamp: number,
-    amount: string
-}
-interface redeemUnderlyingHistory {
-    timestamp: number,
-    amount: string
-}
-interface liquidationCallHistory {
-    timestamp: number,
-    amount: string
-}
-interface reserve {
-    symbol: string,
-    decimals: number
-}
-export interface ReserveHistory {
-    id: string,
-    reserve: reserve,
-    aTokenBalanceHistory: aTokenBalanceHistory[],
-    depositHistory: depositHistory[],
-    redeemUnderlyingHistory: redeemUnderlyingHistory[],
-    liquidationCallHistory: liquidationCallHistory[],
-}
+import { ReserveHistory } from './HistoryInterfaces'
 
 interface props {
     data: ReserveHistory
@@ -115,9 +86,7 @@ export const HandleDepositHistory = ({ data }: props) => {
                 <div>
                     <p>Deposits and Withdrawals</p>
                     <MovementHistory
-                        depositHistory={depositHistory}
-                        redeemUnderlyingHistory={redeemUnderlyingHistory}
-                        liquidationHistory={liquidations}
+                        plotdata={depositHistory.concat(redeemUnderlyingHistory.concat(liquidations))}
                     />
                 </div>
             </DepositChartsDiv>

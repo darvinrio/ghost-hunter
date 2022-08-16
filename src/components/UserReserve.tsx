@@ -1,7 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client'
 
-import {ReserveHistory, HandleDepositHistory} from '../handlers/HandleDepositHistory'
+import {HandleDepositHistory} from '../handlers/HandleDepositHistory'
+import {HandleBorrowHistory} from '../handlers/HandleBorrowHistory'
+import { ReserveHistory } from '../handlers/HistoryInterfaces'
 
 const GET_USER_RESERVE_DEPOSIT_HISTORY = gql`
     query GetDepositHistory($reserve_id: String) {
@@ -30,6 +32,22 @@ const GET_USER_RESERVE_DEPOSIT_HISTORY = gql`
             liquidationCallHistory{
                 timestamp,
                 collateralAmount
+            },
+            vTokenBalanceHistory{
+                timestamp,
+                scaledVariableDebt
+            },
+            sTokenBalanceHistory{
+                timestamp,
+                currentStableDebt
+            },
+            borrowHistory{
+                timestamp,
+                amount
+            },
+            repayHistory{
+                timestamp,
+                amount
             }
         }
     }
@@ -57,9 +75,12 @@ export const UserReserve = () => {
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error!!!</p>
 
+    let history_data = data!.userReserves[0]
+
     return(
         <div>
-            <HandleDepositHistory data={data!.userReserves[0]} />
+            <HandleDepositHistory data={history_data} />
+            <HandleBorrowHistory data={history_data} />
         </div>
     )
 

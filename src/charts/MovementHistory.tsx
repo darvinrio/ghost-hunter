@@ -8,12 +8,13 @@ interface dataprop {
   balance: number;
 }
 interface props {
-  depositHistory: dataprop[],
-  redeemUnderlyingHistory: dataprop[],
-  liquidationHistory: dataprop[]
+  plotdata: dataprop[]
+  // depositHistory: dataprop[],
+  // redeemUnderlyingHistory: dataprop[],
+  // liquidationHistory: dataprop[]
 }
 
-export const MovementHistory = ({ depositHistory, redeemUnderlyingHistory, liquidationHistory }: props) => {
+export const MovementHistory = ({ plotdata }: props) => {
 
   const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>) => {
     if (active && payload && payload.length) {
@@ -33,16 +34,12 @@ export const MovementHistory = ({ depositHistory, redeemUnderlyingHistory, liqui
     return null;
   };
 
-  let plotdata: dataprop[] = depositHistory.concat(redeemUnderlyingHistory.concat(liquidationHistory))
   plotdata.sort((a, b) => {
     return a.timestamp - b.timestamp
   })
 
-  console.log(plotdata)
-
   const getDates = (startDate: Date, endDate: Date, num: number) => {
     const diffDays = differenceInCalendarDays(endDate, startDate);
-    console.log(diffDays)
     let current = startDate,
       velocity = 1;
 
@@ -53,7 +50,6 @@ export const MovementHistory = ({ depositHistory, redeemUnderlyingHistory, liqui
     }
 
     ticks.push(endDate.getTime());
-    console.log(ticks)
     return ticks;
   }
 
