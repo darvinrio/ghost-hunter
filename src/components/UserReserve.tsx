@@ -48,7 +48,6 @@ type RouteParams = {
 export const UserReserve = () => {
 
     const { reserve_id } = useParams<RouteParams>()
-    console.log(reserve_id)
 
     const { loading, error, data } = useQuery<ReserveHistoryData, ReserveHistoryVars>(
         GET_USER_RESERVE_DEPOSIT_HISTORY,

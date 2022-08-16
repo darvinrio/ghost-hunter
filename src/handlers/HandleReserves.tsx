@@ -132,6 +132,11 @@ const ReserveDiv = styled.div`
     justify-content: center ;
     align-items: center ;
 
+    :hover{
+        background-color: #6b6b6b;
+        cursor: pointer;
+    }
+
     padding: 20px ;
     margin: 20px ;
 
