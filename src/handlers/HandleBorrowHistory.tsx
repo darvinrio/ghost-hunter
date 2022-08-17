@@ -21,11 +21,11 @@ export const HandleBorrowHistory = ({ data }: props) => {
     let vBorrows = data.vTokenBalanceHistory.map((bals) => {
         return {
             timestamp: bals.timestamp * 1000,
-            balance: parseInt(bals.scaledVariableDebt) / 10 ** data.reserve.decimals
+            balance: parseInt(bals.currentVariableDebt) / 10 ** data.reserve.decimals
         }
     })
 
-    console.log(vBorrows)
+    // console.log(vBorrows)
 
     let sBorrows = data.sTokenBalanceHistory.map((deposit) => {
         return {
@@ -52,10 +52,33 @@ export const HandleBorrowHistory = ({ data }: props) => {
         return a.timestamp - b.timestamp
     })
 
-    const currentVBorrow = vBorrows[vBorrows.length - 1].balance
-    const currentSBorrow = sBorrows[sBorrows.length - 1].balance
+    let currentVBorrow = 0
+    try {
+        currentVBorrow = vBorrows[vBorrows.length - 1].balance
+    } catch (Error) {
+        console.log(Error)
+        currentVBorrow = 0
+    }
+    let currentSBorrow = 0
+    try {
+        currentSBorrow = sBorrows[sBorrows.length - 1].balance
+    } catch (Error) {
+        console.log(Error)
+        currentSBorrow = 0
+    }
     const borrowCount = borrows.length
     const repayCount = repays.length
+
+    if (borrowCount == 0) {
+        return (
+            <>
+                <h3>
+                    Borrowing Side
+                </h3>
+                No Borrows
+            </>
+        )
+    }
 
 
     return (
@@ -66,7 +89,7 @@ export const HandleBorrowHistory = ({ data }: props) => {
 
             <MetricsDiv>
                 <Metric label='Current Variable Borrow' value={NumberFormatter(currentVBorrow)} />
-                <Metric label='Current Stable Borrow' value={currentSBorrow} />
+                <Metric label='Current Stable Borrow' value={NumberFormatter(currentSBorrow)} />
                 <Metric label='Borrows' value={borrowCount} />
                 <Metric label='Repays' value={repayCount} />
             </MetricsDiv>
@@ -90,6 +113,13 @@ export const HandleBorrowHistory = ({ data }: props) => {
 const DepositChartsDiv = styled.div`
     display:grid;
     grid-template-columns: 1fr 1fr ;
+
+    @media (max-width: 1200px){
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        justify-content: left;
+    }
 
     padding: 10px ;
     margin: 20px ;

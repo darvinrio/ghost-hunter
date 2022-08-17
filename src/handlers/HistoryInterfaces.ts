@@ -1,6 +1,6 @@
 interface vTokenBalanceHistory {
     timestamp: number,
-    scaledVariableDebt: string
+    currentVariableDebt: string
 }
 interface sTokenBalanceHistory {
     timestamp: number,

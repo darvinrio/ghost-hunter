@@ -1,0 +1,19 @@
+query GetPosition($user: String) {
+        users (
+            where: {
+                id: $user
+            }
+        ) {
+            reserves{
+                id,
+                reserve{
+                    symbol,
+                    usageAsCollateralEnabled,
+                    decimals
+                },
+                currentATokenBalance,
+                currentVariableDebt,
+                currentStableDebt
+            }
+        }
+    }

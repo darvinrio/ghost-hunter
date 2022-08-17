@@ -16,8 +16,10 @@ export const User = () => {
             <h1>
                 {user}
             </h1>
+            <hr />
             <CurrentPosition user={user!} />
             <br />
+            <hr />
             <UsersTxs user={user!} />
         </div>
     )

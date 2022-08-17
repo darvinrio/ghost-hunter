@@ -17,7 +17,7 @@ export const HandleDepositHistory = ({ data }: props) => {
         }).format(value)
     }
 
-    console.log(data)
+    // console.log(data)
 
     let aHistory = data.aTokenBalanceHistory.map((bals) => {
         return {
@@ -51,11 +51,35 @@ export const HandleDepositHistory = ({ data }: props) => {
         return a.timestamp - b.timestamp
     })
 
-    const currentBal = aHistory[aHistory.length - 1].balance
+    console.log(aHistory)
+    let currentBal = 0
+    try {
+        let currentBal = aHistory[aHistory.length - 1].balance
+    } catch (Error) {
+        console.log(Error)
+        currentBal = 0
+    }
     const depositCount = depositHistory.length
     const redeemCount = redeemUnderlyingHistory.length
     const liquidationCount = liquidations.length
 
+    if (depositCount == 0) {
+        return (
+            <>
+                <Link to={'/user/' + data.id.substring(0, 42)}>
+                    <h2>
+                        {data.id.substring(0, 42)}
+                    </h2>
+                </Link>
+                <h1>{data.reserve.symbol}</h1>
+
+                <h3>
+                    Lending Side
+                </h3>
+                No Deposits
+            </>
+        )
+    }
 
     return (
         <>
@@ -97,6 +121,13 @@ export const HandleDepositHistory = ({ data }: props) => {
 const DepositChartsDiv = styled.div`
     display:grid;
     grid-template-columns: 1fr 1fr ;
+
+    @media (max-width: 1200px){
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        justify-content: left;
+    }
 
     padding: 10px ;
     margin: 20px ;

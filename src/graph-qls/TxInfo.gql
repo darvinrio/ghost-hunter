@@ -1,0 +1,113 @@
+query GetTxInfo($aave_ids: [String]) {
+    deposits(
+        where: {
+            id_in : $aave_ids
+        } 
+    ) {
+        id, timestamp,
+        reserve{
+            symbol, decimals
+        },
+        amount,
+        userReserve {
+            id
+        }
+    },
+    usageAsCollaterals(
+        where: {
+            id_in : $aave_ids
+        }
+    ) {
+        id, timestamp,
+        reserve{
+            symbol
+        },
+        toState,
+        userReserve {
+            id
+        }
+    },
+    redeemUnderlyings(
+        where: {
+            id_in : $aave_ids
+        }
+    ) {
+        id, timestamp, 
+        reserve {
+            symbol,  decimals
+        },
+        amount,
+        userReserve {
+            id
+        }
+    },
+    borrows (
+        where: {
+            id_in : $aave_ids
+        }
+    ) {
+        id, timestamp, 
+        reserve {
+            symbol, decimals
+        },
+        amount,
+        userReserve {
+            id
+        }
+    },
+    repays (
+        where: {
+            id_in : $aave_ids
+        }
+        ) {
+        id, timestamp, 
+        reserve {
+            symbol, decimals
+        },
+        amount,
+        userReserve {
+            id
+        }
+    },
+    swaps (
+        where: {
+            id_in : $aave_ids
+        }
+    ) {
+        id, timestamp, 
+        reserve {
+        symbol
+        },
+        borrowRateModeTo,
+        userReserve {
+            id
+        }
+    },
+    liquidationCalls (
+        where: {
+            id_in : $aave_ids
+        }
+    ) {
+        id, timestamp,
+        collateralReserve {
+            symbol, decimals
+        },
+        principalReserve {
+            symbol, decimals
+        },
+        collateralAmount,
+        principalAmount,
+        liquidator
+        },
+    flashLoans (
+        where: {
+            id_in : $aave_ids
+        }
+    ) {
+        id, timestamp,
+        reserve {
+            symbol, decimals
+        },
+        amount
+    }
+}

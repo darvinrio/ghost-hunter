@@ -1,0 +1,41 @@
+query GetDepositHistory($reserve_id: String) {
+  userReserves(where: { id: $reserve_id }) {
+    id
+    reserve {
+      symbol
+      decimals
+    }
+    aTokenBalanceHistory {
+      timestamp
+      scaledATokenBalance
+    }
+    depositHistory {
+      timestamp
+      amount
+    }
+    redeemUnderlyingHistory {
+      timestamp
+      amount
+    }
+    liquidationCallHistory {
+      timestamp
+      collateralAmount
+    }
+    vTokenBalanceHistory {
+      timestamp
+      currentVariableDebt
+    }
+    sTokenBalanceHistory {
+      timestamp
+      currentStableDebt
+    }
+    borrowHistory {
+      timestamp
+      amount
+    }
+    repayHistory {
+      timestamp
+      amount
+    }
+  }
+}

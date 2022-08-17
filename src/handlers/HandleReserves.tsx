@@ -24,12 +24,11 @@ export const HandleReserves = ({ positions }: props) => {
     let navigate = useNavigate();
 
     let lending_div: JSX.Element[] = []
-    let borrowing_div: JSX.Element[] = []
 
     positions.map((position) => {
 
-        const handleReserveClick = (e:any) => {
-            navigate('/reserve/'+position.id)
+        const handleReserveClick = (e: any) => {
+            navigate('/reserve/' + position.id)
         }
 
         let decimals = position.reserve.decimals
@@ -40,39 +39,15 @@ export const HandleReserves = ({ positions }: props) => {
         let active_borrow = current_v_debt + current_s_debt
         let active = current_lending + active_borrow
 
-        if (true) {
-            borrowing_div.push(
-                <ReserveDiv onClick={handleReserveClick}>
-                    <p key={position.id}>
-                        <h2>
-                            {position.reserve.symbol}
-                        </h2>
-                        <h3>
-                            {new Intl.NumberFormat('en-GB', {
-                                notation: "compact",
-                                compactDisplay: "short"
-                            }).format(active_borrow)} {' ' + position.reserve.symbol}
-                        </h3>
-                        Variable : {new Intl.NumberFormat('en-GB', {
-                            notation: "compact",
-                            compactDisplay: "short"
-                        }).format(current_v_debt)}
-                        {' '}||
-                        Stable : {new Intl.NumberFormat('en-GB', {
-                            notation: "compact",
-                            compactDisplay: "short"
-                        }).format(current_s_debt)}
-                    </p>
-                </ReserveDiv>
-            )
-        }
-
         lending_div.push(
             <ReserveDiv onClick={handleReserveClick}>
                 <p key={position.id}>
                     <h2>
                         {position.reserve.symbol}
                     </h2>
+                    <hr />
+
+                    <h4>Lending</h4>
                     <h3>
                         {/* {current_lending} */}
                         {new Intl.NumberFormat('en-GB', {
@@ -81,6 +56,26 @@ export const HandleReserves = ({ positions }: props) => {
                         }).format(current_lending)} {' ' + position.reserve.symbol}
                     </h3>
                     Collateral : {position.reserve.usageAsCollateralEnabled ? 'yes' : 'no'}
+
+                    <br />
+                    <hr />
+
+                    <h4>Borrowing</h4>
+                    <h3>
+                        {new Intl.NumberFormat('en-GB', {
+                            notation: "compact",
+                            compactDisplay: "short"
+                        }).format(active_borrow)} {' ' + position.reserve.symbol}
+                    </h3>
+                    Variable : {new Intl.NumberFormat('en-GB', {
+                        notation: "compact",
+                        compactDisplay: "short"
+                    }).format(current_v_debt)}
+                    {' '}||
+                    Stable : {new Intl.NumberFormat('en-GB', {
+                        notation: "compact",
+                        compactDisplay: "short"
+                    }).format(current_s_debt)}
                 </p>
             </ReserveDiv>
         )
@@ -88,20 +83,9 @@ export const HandleReserves = ({ positions }: props) => {
 
     return (
         <CurrentPositionsDiv>
-            <div>
-                <h3>Lending Positions</h3>
-                <PositionDiv>
-                    {lending_div}
-                </PositionDiv>
-
-            </div>
-            <div>
-                <h3>Borrowing Positions</h3>
-                {(borrowing_div.length == 0) ? 'None' : ''}
-                <PositionDiv>
-                    {borrowing_div}
-                </PositionDiv>
-            </div>
+            <PositionDiv>
+                {lending_div}
+            </PositionDiv>
         </CurrentPositionsDiv>
     )
 }

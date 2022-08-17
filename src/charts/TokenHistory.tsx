@@ -10,7 +10,8 @@ import styled from 'styled-components';
 
 interface dataprop {
     timestamp: number,
-    balance: number
+    balance: number,
+    timestampDate? :Date
 }
 
 interface props {
@@ -40,15 +41,16 @@ export const TokenHistory = ({ plotdata }: props) => {
     plotdata.sort((a, b) => {
         return a.timestamp - b.timestamp
     })
-    // plotdata.map((data) => {
-    //     data.timestampDate = new Date(data.timestamp)
-    // })
+    plotdata.map((data) => {
+        data.timestampDate = new Date(data.timestamp)
+    })
     // console.log(plotdata)
 
     const startDate = getStartDate(plotdata)
     const endDate = getEndDate(plotdata)
     const ticks = getTicks(startDate, endDate, 5)
     const filledData = fillTicksData(ticks, plotdata)
+    console.log(filledData)
 
     return (
         <>
@@ -57,7 +59,7 @@ export const TokenHistory = ({ plotdata }: props) => {
                     <defs>
                         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="5%" stopColor="pink" stopOpacity={0.8} />
-                            <stop offset="95%" stopColor="pink" stopOpacity={0} />
+                            <stop offset="95%" stopColor="pink" stopOpacity={0.5} />
                         </linearGradient>
                     </defs>
 

@@ -6,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Data Queried from [theGraph](https://thegraph.com/hosted-service/subgraph/aave/protocol-v2)
 
+All Graph Queries are included separately in `ghost_hunter/src/graph-qls` folder
+
 ## Prerequisites
 
 Get a Etherscan API

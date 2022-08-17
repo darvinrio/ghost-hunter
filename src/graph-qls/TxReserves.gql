@@ -1,0 +1,30 @@
+query GetTxReserves($reserve_ids: [String]) {
+        atokenBalanceHistoryItems(
+            where:{
+                id_in: $reserve_ids
+            }
+        ){
+            id,
+            userReserve{
+            reserve{
+                symbol,
+                decimals
+            }
+            }
+            scaledATokenBalance
+        },
+        vtokenBalanceHistoryItems(
+            where:{
+                id_in: $reserve_ids
+            }
+        ){
+            id,
+            userReserve{
+            reserve{
+                symbol,
+                decimals
+            }
+            }
+            scaledVariableDebt
+        }
+    }

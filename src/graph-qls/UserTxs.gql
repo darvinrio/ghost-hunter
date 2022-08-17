@@ -1,0 +1,126 @@
+query GetTxs($user: String, $skip: Int) {
+  deposits(
+    skip: $skip
+    first: 1000
+    orderBy: timestamp
+    orderDirection: desc
+    where: { user: $user }
+  ) {
+    id
+    timestamp
+    reserve {
+      symbol
+      decimals
+    }
+    amount
+  }
+  usageAsCollaterals(
+    skip: $skip
+    first: 1000
+    orderBy: timestamp
+    orderDirection: desc
+    where: { user: $user }
+  ) {
+    id
+    timestamp
+    reserve {
+      symbol
+    }
+    toState
+  }
+  redeemUnderlyings(
+    skip: $skip
+    first: 1000
+    orderBy: timestamp
+    orderDirection: desc
+    where: { user: $user }
+  ) {
+    id
+    timestamp
+    reserve {
+      symbol
+      decimals
+    }
+    amount
+  }
+  borrows(
+    skip: $skip
+    first: 1000
+    orderBy: timestamp
+    orderDirection: desc
+    where: { user: $user }
+  ) {
+    id
+    timestamp
+    reserve {
+      symbol
+      decimals
+    }
+    amount
+  }
+  repays(
+    skip: $skip
+    first: 1000
+    orderBy: timestamp
+    orderDirection: desc
+    where: { user: $user }
+  ) {
+    id
+    timestamp
+    reserve {
+      symbol
+      decimals
+    }
+    amount
+  }
+  swaps(
+    skip: $skip
+    first: 1000
+    orderBy: timestamp
+    orderDirection: desc
+    where: { user: $user }
+  ) {
+    id
+    timestamp
+    reserve {
+      symbol
+    }
+    borrowRateModeTo
+  }
+  liquidationCalls(
+    skip: $skip
+    first: 1000
+    orderBy: timestamp
+    orderDirection: desc
+    where: { user: $user }
+  ) {
+    id
+    timestamp
+    collateralReserve {
+      symbol
+      decimals
+    }
+    principalReserve {
+      symbol
+      decimals
+    }
+    collateralAmount
+    principalAmount
+    liquidator
+  }
+  flashLoans(
+    skip: $skip
+    first: 1000
+    orderBy: timestamp
+    orderDirection: desc
+    where: { initiator: $user }
+  ) {
+    id
+    timestamp
+    reserve {
+      symbol
+      decimals
+    }
+    amount
+  }
+}
